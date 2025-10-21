@@ -1,0 +1,16 @@
+<%= simple_form_for @survey do |f| %>
+  <%= f.input :description %>
+
+  <h3>Questions</h3>  
+  <%= f.simple_fields_for :questions do |q| %>
+    <div class="nested-fields">
+      <%= render "question", f: q %>    
+    </div>
+  <% end %>  
+
+  <% if type == "new" %>    
+    <%= f.submit "Create Survey" %>
+  <% elsif type == "edit" %>
+    <%= f.submit "Update Survey", method: :put %>
+  <% end %>
+<% end %>
