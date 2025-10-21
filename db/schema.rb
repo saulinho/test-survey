@@ -10,7 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_09_05_175239) do
+ActiveRecord::Schema[8.0].define(version: 2025_10_21_173609) do
+  create_table "companies", force: :cascade do |t|
+    t.string "name"
+    t.string "subdomain"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "options", force: :cascade do |t|
     t.string "description"
     t.integer "question_id", null: false
@@ -37,8 +44,11 @@ ActiveRecord::Schema[8.0].define(version: 2025_09_05_175239) do
     t.string "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "company_id", null: false
+    t.index ["company_id"], name: "index_surveys_on_company_id"
   end
 
   add_foreign_key "options", "questions"
   add_foreign_key "questions", "surveys"
+  add_foreign_key "surveys", "companies"
 end
