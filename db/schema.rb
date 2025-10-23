@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_10_22_134720) do
+ActiveRecord::Schema[8.0].define(version: 2025_10_23_180055) do
   create_table "companies", force: :cascade do |t|
     t.string "name"
     t.string "subdomain"
@@ -59,11 +59,11 @@ ActiveRecord::Schema[8.0].define(version: 2025_10_22_134720) do
   end
 
   create_table "reply_options", force: :cascade do |t|
-    t.string "checked"
     t.integer "option_id", null: false
     t.integer "reply_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "checked"
     t.index ["option_id"], name: "index_reply_options_on_option_id"
     t.index ["reply_id"], name: "index_reply_options_on_reply_id"
   end

@@ -1,4 +1,6 @@
-<h1>Welcome#index</h1>
-<% @survey_share.replies.each do |reply| %>
-  <h2><%= reply.question.description %></h2>  
+<h1><%= @survey.description %></h1>
+
+<% @survey.questions.each do |question| %>
+  <h2><%= question.description %></h2>
+  <%= line_chart ReplyOption.joins(:option).where(reply_options: { checked: true }, "options.question_id": question.id).group("options.description").count, code:true,  download: true %>
 <% end %>
