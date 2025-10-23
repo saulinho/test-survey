@@ -1,5 +1,5 @@
 class WelcomeController < ApplicationController
   def index
-    @survey_share = SurveyShare.last
+    @survey = Survey.first
   end
 end
