@@ -1,0 +1,4 @@
+<h1>Welcome#index</h1>
+<% @survey_share.replies.each do |reply| %>
+  <h2><%= reply.question.description %></h2>  
+<% end %>

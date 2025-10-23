@@ -1,0 +1,7 @@
+<%= f.input :description, label: "Question" %>
+<h3>Options</h3>  
+<%= f.simple_fields_for :replies do |r| %>
+  <div class="nested-fields">
+    <%= render "option", f: r %>
+  </div>
+<% end %>

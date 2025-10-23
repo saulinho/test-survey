@@ -9,8 +9,9 @@ class SurveysController < ApplicationController
 
   def new
     @survey = Survey.new
-    @survey.questions.build
-    5.times { @survey.questions.first.options.build }
+    3.times { @survey.questions.build do |question|
+      5.times { question.options.build }
+    end }
   end
 
   def create
@@ -27,7 +28,7 @@ class SurveysController < ApplicationController
 
   def survey_params
     params.expect(survey: [ :description, 
-                    questions_attributes: [[ :id, :description, :_destroy,
+                    questions_attributes: [[ :id, :description, :question_type_id, :_destroy,
                       options_attributes: [[ :id, :description, :_destroy ]]
                     ]]
                   ])    

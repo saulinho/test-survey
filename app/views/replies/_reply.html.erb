@@ -1,0 +1,9 @@
+<h2><%= f.object.question.description %></h2>
+<%= f.input :question_id, as: :hidden %>
+<%= f.input :description, label: "Resposta" %>
+
+<%= f.simple_fields_for :reply_options do |o| %>
+  <div class="nested-fields">
+    <%= render "option", f: o %>
+  </div>
+<% end %>

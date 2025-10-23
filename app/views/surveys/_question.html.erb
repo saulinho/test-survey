@@ -1,4 +1,6 @@
 <%= f.input :description, label: "Question" %>
+<%= f.association :question_type, collection: QuestionType.order(:description), label_method: :description, value_method: :id %>
+
 <h3>Options</h3>  
 <%= f.simple_fields_for :options do |o| %>
   <div class="nested-fields">

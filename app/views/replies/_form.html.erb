@@ -1,0 +1,12 @@
+<%= simple_form_for @survey_share, method: :post, url: replies_create_path do |f| %>
+  <h3>Survey: <%= @survey_share.survey.description %></h3>  
+  <%= f.input :token, as: :hidden %>
+
+  <%= f.simple_fields_for :replies do |r| %>
+    <div class="nested-fields">
+      <%= render "reply", f: r %>
+    </div>
+  <% end %> 
+
+  <%= f.submit "Create Reply" %>
+<% end %>
